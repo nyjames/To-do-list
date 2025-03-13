@@ -10,59 +10,9 @@ import SwiftUI
 struct todolistView: View {
     
 // ------- Declaration -------- //
-    var todo:[todolistitems] = [
-        
-        todolistitems(
-            title: "Walk Dog",
-            tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-            status: true
-        ),
-        
-        todolistitems(
-            title: "Create Study Guide",
-            tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-            status: true
-        ),
-        
-        todolistitems(
-            title: "Cook Family Dinner",
-            tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
-            status: true
-        ),
-        
-        todolistitems(
-            title: "Go to Grocery Store",
-            tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
-            status: false
-        ),
-        
-        
-        todolistitems(
-            title: "Walk Dog",
-            tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-            status: true
-        ),
-        
-        todolistitems(
-            title: "Create Study Guide",
-            tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-            status: true
-        ),
-        
-        todolistitems(
-            title: "Cook Family Dinner",
-            tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
-            status: true
-        ),
-        
-        todolistitems(
-            title: "Go to Grocery Store",
-            tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
-            status: false
-        ),
     
-        
-    ]
+    @State var todo:[todolistitems] = [todolistitems]()
+    var dataService = DataService()
     
     var body: some View {
         
@@ -116,6 +66,11 @@ struct todolistView: View {
                 
             }
             .listStyle(.plain)
+            .onAppear{
+                
+                todo = dataService.getData()
+                
+            }
         
         ZStack{
             
