@@ -13,7 +13,7 @@ struct todolistitems:Identifiable {
     
     var title = String()
     var tasks = String()
-    var status = String()
+    var status = Bool()
     
     
 }

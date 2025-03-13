@@ -15,50 +15,52 @@ struct todolistView: View {
         todolistitems(
             title: "Walk Dog",
             tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-            status: "Done"
+            status: true
         ),
         
         todolistitems(
             title: "Create Study Guide",
             tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-            status: "Done"
+            status: true
         ),
+        
+        todolistitems(
+            title: "Cook Family Dinner",
+            tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
+            status: true
+        ),
+        
+        todolistitems(
+            title: "Go to Grocery Store",
+            tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
+            status: false
+        ),
+        
         
         todolistitems(
             title: "Walk Dog",
             tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-            status: "Done"
+            status: true
         ),
         
         todolistitems(
             title: "Create Study Guide",
             tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-            status: "Done"
+            status: true
         ),
         
         todolistitems(
-            title: "Walk Dog",
-            tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-            status: "Done"
+            title: "Cook Family Dinner",
+            tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
+            status: true
         ),
         
         todolistitems(
-            title: "Create Study Guide",
-            tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-            status: "Done"
+            title: "Go to Grocery Store",
+            tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
+            status: false
         ),
-        
-        todolistitems(
-            title: "Walk Dog",
-            tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-            status: "Done"
-        ),
-        
-        todolistitems(
-            title: "Create Study Guide",
-            tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-            status: "Done"
-        ),
+    
         
     ]
     
@@ -87,8 +89,8 @@ struct todolistView: View {
                             .font(.caption)
                         
                         Spacer()
-                        
-                        Text(task.status)
+                    
+                        Text("True or False")
                             .font(.caption)
   
                     }
@@ -116,7 +118,30 @@ struct todolistView: View {
             .listStyle(.plain)
         
         ZStack{
-            Image(systemName: "plus")
+            
+            HStack{
+                
+                Spacer()
+                
+                Image(systemName: "plus")
+                
+                Spacer()
+                Spacer()
+                
+                Image(systemName: "plus")
+                
+                Spacer()
+                Spacer()
+                
+                Image(systemName: "plus")
+                
+                Spacer()
+                
+            }
+            
+
+            
+            
         }.padding()
             
         
