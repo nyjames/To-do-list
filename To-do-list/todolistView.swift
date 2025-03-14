@@ -14,6 +14,12 @@ struct todolistView: View {
     @State var todo:[todolistitems] = [todolistitems]()
     var dataService = DataService()
     
+    func delete(_ task: todolistitems) {
+        if let index = todo.firstIndex(where: {$0.id == task.id }) {
+            todo.remove(at: index)
+        }
+    }
+    
     var body: some View {
         
         
@@ -23,95 +29,118 @@ struct todolistView: View {
             Text("To do list")
                 .bold()
         }
+        
+        List(todo) {task in
             
-            List(todo) { task in
+            VStack{
+                
+                Spacer()
+                
+                HStack{
+                    
+                    Text(task.title)
+                        .bold()
+                        .font(.caption)
+                    
+                    Spacer()
+                    Spacer()
+                    
+                    
+                        .font(.caption)
+                    
+                }
+                
+                Spacer()
                 
                 VStack{
                     
                     Spacer()
                     
-                    HStack{
-                        
-                        Spacer()
-                        
-                        Text(task.title)
-                            .bold()
-                            .font(.caption)
-                        
-                        Spacer()
-                    
-                        Text("True or False")
-                            .font(.caption)
-  
-                    }
+                    Text(task.tasks)
                     
                     Spacer()
-                    
-                    VStack{
-                        
-                        Spacer()
-                        
-                        Text(task.tasks)
-                        
-                        Spacer()
-                    }
-                        
-                     
-                     
                 }
-                .listRowSeparator(.automatic)
+                
+                Spacer()
+                
+                HStack{
+                    Spacer()
+                    Spacer()
+                    
+                    Button {
+                        delete(task)
+                    } label: {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .frame(width: 16, height: 18)
+                    }
 
- 
+    
+                    
+                    
+                    
+                }
+                
+                Spacer()
+                
                 
                 
             }
-            .listStyle(.plain)
-            .onAppear{
-                
-                todo = dataService.getData()
-                
-            }
+            .listRowSeparator(.automatic)
+            
+            
+            
+            
+        }
+        .listStyle(.plain)
+        .onAppear{
+            
+            todo = dataService.getData()
+            
+        }
         
         ZStack{
             
             HStack{
                 
-                Spacer()
+                Button {
+                    
+                    // pass
+                } label: {
+                    Text(" New Task ")
+                        .font(.caption)
+                        .padding()
+                        .border(.black)
+                        .foregroundStyle(.black)
+                    
+                }
                 
-                Image(systemName: "plus")
-                
-                Spacer()
-                Spacer()
-                
-                Image(systemName: "plus")
-                
-                Spacer()
-                Spacer()
-                
-                Image(systemName: "plus")
-                
-                Spacer()
                 
             }
             
-
+            
             
             
         }.padding()
-            
         
 
         
         
         
         
-
         
         
         
         
-// --------------------------- //
+        
+        
+        
+        
+        
+        
+        // --------------------------- //
     }
+    
 }
 
 #Preview {
