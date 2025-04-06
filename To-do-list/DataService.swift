@@ -16,54 +16,56 @@ struct DataService {
             todolistitems(
                 title: "Walk Dog",
                 tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-                status: true
+                status: "Complete"
             ),
             
             todolistitems(
                 title: "Create Study Guide",
                 tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-                status: true
+                status: "Complete"
             ),
             
             todolistitems(
                 title: "Cook Family Dinner",
                 tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
-                status: true
+                status: "Complete"
             ),
             
             todolistitems(
                 title: "Go to Grocery Store",
                 tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
-                status: false
+                status: "Complete"
             ),
             
             
             todolistitems(
                 title: "Walk Dog",
                 tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-                status: true
+                status: "Complete"
             ),
             
             todolistitems(
                 title: "Create Study Guide",
                 tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-                status: true
+                status: "Complete"
             ),
             
             todolistitems(
                 title: "Cook Family Dinner",
                 tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
-                status: true
+                status: "Complete"
             ),
             
             todolistitems(
                 title: "Go to Grocery Store",
                 tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
-                status: false
+                status: "Complete"
             ),
         
             
         ]
+        
+        
         
         
     }

@@ -13,13 +13,10 @@ struct todolistitems:Identifiable {
     
     var title = String()
     var tasks = String()
-    var status = Bool()
+    var status = String()
     
-    func delete() {
+  
         // delete self
         
-        
-    }
-    
     
 }
