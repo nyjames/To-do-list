@@ -54,7 +54,7 @@ struct todolistView: View {
                     .frame(width: 405, height: 500)
                     .offset(x: 0, y: -160)
                     .foregroundStyle(
-                        Color(hex: "#C4C3E3")
+                        Color(hex: "#DDD7E5")
                     )
                 
                 
@@ -89,10 +89,22 @@ struct todolistView: View {
                         
                         Spacer()
                         
-                        Image(systemName: "person.crop.circle.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .padding()
+                        ZStack{
+                            
+                            Circle()
+                                .frame(width: 60, height: 60)
+                                .foregroundStyle(
+                                    Color(hex: "#ffffff")
+                                )
+                            
+                            
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .padding()
+                            
+                        }
+                        
                         
                         
                         
@@ -119,8 +131,11 @@ struct todolistView: View {
                             
                             HStack {
                                 
+                                
+                                
                                 Text("Hello, Name! You deserve to have your life together. Act like it!")
                                     .font(.headline)
+                                    .fontWeight(.heavy)
                                     .bold()
                                 
                                 Spacer()
@@ -148,134 +163,202 @@ struct todolistView: View {
                     
                     HStack {
                         
-                        Text("Task Folders")
-                            .font(.title2)
+                        Text("Saved Tasks")
+                            .font(.largeTitle)
                             .bold()
+                            .padding()
                         
                         Spacer()
                         
                     }.padding()
                         .foregroundStyle(
-                            Color(hex: "#41549a")
+                            Color(hex: "#504E76")
                         )
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         
                         HStack {
                             
-                            
+                            ZStack{
                                 
-                                Color(hex: "#504E76")
-                                Circle()
-                                    .frame(width: 275, height: 500)
-                                    .offset(x: 0, y: -150)
+                                Rectangle()
+                                Color(.white)
+                                
+                                
+                                
+                                
+                                
+                                ZStack {
+                                    
+                                    Color(hex: "#504E76")
+                                    Circle()
+                                        .frame(width: 275, height: 500)
+                                        .offset(x: 0, y: -150)
+                                        .foregroundStyle(
+                                            Color(hex: "#DDD7E5")
+                                        )
+                                    
+                                    VStack{
+                                        Image(systemName: "folder.fill")
+                                            .resizable()
+                                            .frame(width: 80, height: 50)
+                                            .shadow(radius: 6, x: 5, y: 5)
+                                            .padding()
+                                        
+                                        Text("School Assignments")
+                                            .font(.title2)
+                                            .fontWeight(.heavy)
+                                            .bold()
+                                            .padding()
+                                        
+                                    }.padding()
+                                    
+                                    
+                                }.frame(width: 180, height: 230)
+                                
+                                    .cornerRadius(25)
+                                
                                     .foregroundStyle(
-                                        Color(hex: "#DDD7E5")
+                                        Color(hex: "#F0E6E4")
                                     )
                                 
-                                VStack{
-                                    Image(systemName: "folder.fill")
-                                        .resizable()
-                                        .frame(width: 100, height: 70)
-                                        .shadow(radius: 6, x: 5, y: 5)
-                                        .padding()
+                                   
+                                
+                                
+                            }
+                            .cornerRadius(25)
+                            .frame(width: 190, height: 240)
+                            .shadow(radius: 6, x: 5, y: 5)
+                            
+                            
+                            
+                            ZStack{
+                                
+                                Rectangle()
+                                Color(.white)
+                                
+                                
+                                
+                                
+                                
+                                ZStack {
                                     
-                                    Text("School Assignments")
-                                        .font(.headline)
-                                        .padding()
+                                    Color(hex: "#504E76")
+                                    Circle()
+                                        .frame(width: 275, height: 500)
+                                        .offset(x: 0, y: -150)
+                                        .foregroundStyle(
+                                            Color(hex: "#DDD7E5")
+                                        )
                                     
-                                }.padding()
+                                    VStack{
+                                        Image(systemName: "folder.fill")
+                                            .resizable()
+                                            .frame(width: 80, height: 50)
+                                            .shadow(radius: 6, x: 5, y: 5)
+                                            .padding()
+                                        
+                                        Text("School Assignments")
+                                            .font(.title2)
+                                            .fontWeight(.heavy)
+                                            .bold()
+                                            .padding()
+                                        
+                                    }.padding()
+                                    
+                                    
+                                }.frame(width: 180, height: 230)
                                 
+                                    .cornerRadius(25)
                                 
-                            }.frame(width: 200, height: 250)
-                            
-                                .cornerRadius(25)
-                            
-                                .foregroundStyle(
-                                    Color(hex: "#F0E6E4")
-                                )
-                            
-                                .shadow(radius: 6, x: 5, y: 5)
-                            
-                            ZStack {
-                                
-                                Color(hex: "#504E76")
-                                Circle()
-                                    .frame(width: 275, height: 500)
-                                    .offset(x: 0, y: -150)
                                     .foregroundStyle(
-                                        Color(hex: "#DDD7E5")
+                                        Color(hex: "#F0E6E4")
                                     )
                                 
-                                VStack{
-                                    Image(systemName: "folder.fill")
-                                        .resizable()
-                                        .frame(width: 100, height: 70)
-                                        .shadow(radius: 6, x: 5, y: 5)
-                                        .padding()
                                     
-                                    Text("School Assignments")
-                                        .font(.headline)
-                                        .padding()
+                                
+                                
+                            }
+                            .cornerRadius(25)
+                            .frame(width: 190, height: 240)
+                            .shadow(radius: 6, x: 5, y: 5)
+                            
+                            
+                            ZStack{
+                                
+                                Rectangle()
+                                Color(.white)
+                                
+                                
+                                
+                                
+                                
+                                ZStack {
                                     
-                                }.padding()
+                                    Color(hex: "#504E76")
+                                    Circle()
+                                        .frame(width: 275, height: 500)
+                                        .offset(x: 0, y: -150)
+                                        .foregroundStyle(
+                                            Color(hex: "#DDD7E5")
+                                        )
+                                    
+                                    VStack{
+                                        Image(systemName: "folder.fill")
+                                            .resizable()
+                                            .frame(width: 80, height: 50)
+                                            .shadow(radius: 6, x: 5, y: 5)
+                                            .padding()
+                                        
+                                        Text("School Assignments")
+                                            .font(.title2)
+                                            .fontWeight(.heavy)
+                                            .bold()
+                                            .padding()
+                                        
+                                    }.padding()
+                                    
+                                    
+                                }.frame(width: 180, height: 230)
                                 
+                                    .cornerRadius(25)
                                 
-                            }.frame(width: 200, height: 250)
-                            
-                                .cornerRadius(25)
-                            
-                                .foregroundStyle(
-                                    Color(hex: "#F0E6E4")
-                                )
-                                .shadow(radius: 6, x: 5, y: 5)
-                            
-                            ZStack {
-                                
-                                Color(hex: "#504E76")
-                                Circle()
-                                    .frame(width: 275, height: 500)
-                                    .offset(x: 0, y: -150)
                                     .foregroundStyle(
-                                        Color(hex: "#DDD7E5")
+                                        Color(hex: "#F0E6E4")
                                     )
                                 
-                                VStack{
-                                    Image(systemName: "folder.fill")
-                                        .resizable()
-                                        .frame(width: 100, height: 70)
-                                        .shadow(radius: 6, x: 5, y: 5)
-                                        .padding()
+                            
+                                
                                     
-                                    Text("School Assignments")
-                                        .font(.headline)
-                                        .padding()
-                                    
-                                }.padding()
                                 
                                 
-                            }.frame(width: 200, height: 250)
+                            }
+                            .cornerRadius(25)
+                            .frame(width: 190, height: 240)
+                            .shadow(radius: 6, x: 5, y: 5)
                             
-                                .cornerRadius(25)
                             
-                                .foregroundStyle(
-                                    Color(hex: "#F0E6E4")
-                                )
-                                .shadow(radius: 6, x: 5, y: 5)
+                            
+                            
+                            
                         }
-                        
-                        
                     }
+                    .padding()
+
                     
                     HStack {
                         
-                        Text("Current tasks to complete")
-                            .font(.title2)
+                        Text("Tasks to Complete")
+                            .font(.largeTitle)
                             .bold()
+                            .padding()
                         
                         Spacer()
                         
                     }.padding()
+                        .foregroundStyle(
+                            Color(hex: "#504E76")
+                        )
                     
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
@@ -296,24 +379,85 @@ struct todolistView: View {
                                             Text(task.title)
                                                 .font(.title2)
                                                 .bold()
+                                                .foregroundStyle(
+                                                    Color(hex: "#504E76")
+                                                )
                                             
                                             Spacer()
                                             
                                             // Delete Button
                                             
-                                            Button {
-                                                delete(task)
-                                            } label: {
-                                                Image(systemName: "trash")
-                                                    
+                                            ZStack{
+                                                
+                                                Circle()
+                                                    .frame(width: 30, height: 30)
+                                                    .foregroundStyle(
+                                                        Color(hex: "#504E76")
+                                                    )
+                                                
+                                                Button {
+                                                    delete(task)
+                                                } label: {
+                                                    Image(systemName: "pencil")
+                                                        .bold()
+                                                        .foregroundStyle(
+                                                            Color(hex: "#DDD7E5")
+                                                        )
+                                                        
+                                                }
+                                                
+                                                
                                             }
+                                            
+                                            ZStack{
+                                                
+                                                Circle()
+                                                    .frame(width: 30, height: 30)
+                                                    .foregroundStyle(
+                                                        Color(hex: "#504E76")
+                                                    )
+                                                
+                                                Button {
+                                                    delete(task)
+                                                } label: {
+                                                    Image(systemName: "trash.fill")
+                                                        .bold()
+                                                        .foregroundStyle(
+                                                            Color(hex: "#DDD7E5")
+                                                        )
+                                                        
+                                                }
+                                                
+                                                
+                                            }
+                                            
                                             
                                             
                                         }
                                         
                                         
                                         HStack{
-                                            Text("Due at 3:00PM")
+                                            ZStack{
+                         
+                                                Capsule()
+                                                    .frame(width: 150, height: 25)
+                                                    .foregroundStyle(
+                                                        Color(hex: "#DDD7E5")
+                                                    )
+                                                
+                                                
+                                                Text("Due at 3:00PM")
+                                                    .fontWeight(.heavy)
+                                                    .bold()
+                                                    
+                                                    .foregroundStyle(
+                                                        Color(hex: "#504E76")
+                                                        )
+                                                
+  
+                                            }
+                                            
+                                            
                                             
                                             Spacer()
                                             
@@ -324,15 +468,35 @@ struct todolistView: View {
                                         
                                         Spacer()
                             
-                                        VStack{
+                                        VStack(spacing: 10){
                                             Text(task.tasks)
+                                            
                                         }
                                         
                                         Spacer()
                                         
                                         HStack{
                                             
-                                            Text(task.status)
+                                            
+                                            ZStack{
+                                                
+                                                Capsule()
+                                                    .frame(width: 100, height: 25)
+                                                    .foregroundStyle(
+                                                        Color(hex: "#504E76")
+                                                    )
+                                                
+                                                Text(task.status)
+                                                    .font(.headline)
+                                                    .fontWeight(.heavy)
+                                                    .bold()
+                                                    
+                                                    .foregroundStyle(
+                                                        Color(hex: "#DDD7E5")
+                                                        
+                                                    )
+                                               
+                                            }
                                             
                                             Spacer()
                                         }
