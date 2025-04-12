@@ -14,6 +14,7 @@ struct ScrollViewOfTasks: View {
     
     @State private var showCreate = false
     @Query private var items: [TaskItems]
+    @Environment(\.modelContext) var context
     
     var body: some View {
         
@@ -203,17 +204,10 @@ struct ScrollViewOfTasks: View {
                                                             Color(hex: "#504E76"))
                                                     
                                                     
-                                                    Button(action: {
-                                                        //
-                                                        
-                                                    }, label: {
-                                                        Image(systemName: "trash.fill")
-                                                            .bold()
-                                                            .foregroundStyle(
-                                                                Color(hex: "#DDD7E5")
-                                                            )
-                                                        
-                                                    })
+                                                    Button {
+                                                            context.delete(item)
+                                                    }
+                                                }
                                                 }
                                                 
                                                 
@@ -341,7 +335,7 @@ struct ScrollViewOfTasks: View {
                 
             }
             
-        }
+        
 
 
 
