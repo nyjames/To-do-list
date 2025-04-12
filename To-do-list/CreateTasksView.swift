@@ -20,31 +20,43 @@ struct CreateTasksView: View {
     
     var body: some View {
         
-        List {
-            TextField("Name", text: $item.title)
-            TextField("Description", text: $item.descr)
-            DatePicker("Choose a Date",
-                       selection: $item.dateDue,
-                       displayedComponents: .date)
-            DatePicker("Choose a time",
-                       selection: $item.dateDue,
-                       displayedComponents: .hourAndMinute)
+        ZStack{
             
-            Picker("status", selection: $item.status) {
-                Text("Not Started").tag("Not Started")
-                Text("In Progress").tag("In Progress")
-                Text("Completed").tag("Completed")
-
-            }
-            .pickerStyle(.menu)
+            Image("Background")
+                .resizable()
+                .ignoresSafeArea()
             
-            Button("Create") {
-                withAnimation {
-                    context.insert(item)
-                }
-                dismiss()
+            VStack {
+                
+                List {
+                    TextField("Name", text: $item.title)
+                        
+                    TextField("Description", text: $item.descr)
+                    DatePicker("Choose a Date",
+                               selection: $item.dateDue,
+                               displayedComponents: .date)
+                    DatePicker("Choose a time",
+                               selection: $item.dateDue,
+                               displayedComponents: .hourAndMinute)
+                    
+                    Picker("status", selection: $item.status) {
+                        Text("Not Started").tag("Not Started")
+                        Text("In Progress").tag("In Progress")
+                        Text("Completed").tag("Completed")
+                        
+                    }
+                    .pickerStyle(.menu)
+                    
+                    Button("Create") {
+                        withAnimation {
+                            context.insert(item)
+                        }
+                        dismiss()
+                    }
+                }.navigationTitle("Create Task")
+                    .listStyle(.plain)
             }
-        }.navigationTitle("Create Task")
+        }
     }
 }
 

@@ -120,126 +120,210 @@ struct ScrollViewOfTasks: View {
                 
                 // tasks stack
                 
+                HStack{
+                    Text("Tasks to Complete")
+                        .font(.caption)
+                        .bold()
+                        .foregroundStyle(
+                            Color(hex: "#504E76")
+                        )
+                    
+                    Spacer()
+                    
+                    ZStack{
+                        
+                        Circle()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(
+                                Color(hex: "#504E76"))
+                            .offset(x:-15, y: 0)
+                        
+                        Button(action: {
+                            showCreate.toggle()
+                            
+                        }, label: {
+                            Image(systemName: "plus")
+                                .bold()
+                                .foregroundStyle(
+                                    Color(hex: "#DDD7E5")
+                                )
+                                .offset(x:-19, y: 0)
+                        })
+                    }
+                    
+                }
+                
+                
+                
                 
                 NavigationStack {
                     
                     
                     
-                    List {
-                        ForEach(items) { item in
-                            
-                            ZStack {
-                                Rectangle()
-                                Color(.white)
-                                
-                                VStack {
+                   
+                    
+                    ZStack {
+                        
+                        Image("Background")
+                            .resizable()
+                            .ignoresSafeArea()
+                        
+                    
+
+                            List {
+                                ForEach(items) { item in
                                     
-                                    HStack {
-                                        // title
-                                        Text(item.title)
-                                            .font(.caption)
-                                            
+                                    ZStack {
+                                        Rectangle()
+                                        Color(.white)
                                         
-                                        
-                                        Spacer()
-                                        
-                                        ZStack{
+                                        VStack {
                                             
-                                            Circle()
-                                                .frame(width: 25, height: 25)
-                                                .foregroundStyle(
-                                                    Color(hex: "#504E76"))
-                                            
-                                            
-                                            Button(action: {
-                                                //
+                                            HStack {
+                                                // title
+                                                Text(item.title)
+                                                    .font(.caption)
+                                                    .fontWeight(.heavy)
                                                 
-                                            }, label: {
-                                                Image(systemName: "trash.fill")
-                                                    .bold()
                                                     .foregroundStyle(
-                                                        Color(hex: "#DDD7E5")
+                                                        Color(hex: "#504E76")
+                                                    )
+
+                                                    
+                                                
+                                                
+                                                
+                                                Spacer()
+                                                
+                                                ZStack{
+                                                    
+                                                    Circle()
+                                                        .frame(width: 25, height: 25)
+                                                        .foregroundStyle(
+                                                            Color(hex: "#504E76"))
+                                                    
+                                                    
+                                                    Button(action: {
+                                                        //
+                                                        
+                                                    }, label: {
+                                                        Image(systemName: "trash.fill")
+                                                            .bold()
+                                                            .foregroundStyle(
+                                                                Color(hex: "#DDD7E5")
+                                                            )
+                                                        
+                                                    })
+                                                }
+                                                
+                                                
+                                            }
+                                            .padding()
+                                            
+                                            HStack {
+                                                
+                                                ZStack{
+                                                    
+                                                    Capsule()
+                                                        .frame(width: 150, height: 25)
+                                                        .foregroundStyle(
+                                                            Color(hex: "#DDD7E5")
+                                                        )
+                                                    
+                                                    Text("Due at:  \(item.dateDue.formatted(date: .omitted, time: .shortened))")
+                                                        .font(.caption)
+                                                        .fontWeight(.heavy)
+                                                    
+                                                        .foregroundStyle(
+                                                            Color(hex: "#504E76")
+                                                        )
+                                                }
+                                                
+                                                Spacer()
+                                                
+                                                Text(item.dateDue.formatted(date: .abbreviated, time: .omitted))
+                                                    .font(.caption)
+                                                    .fontWeight(.heavy)
+                                                
+                                                    .foregroundStyle(
+                                                        Color(hex: "#504E76")
                                                     )
                                                 
-                                            })
+                                               
+                                                
+                                               
+                                                
+                                                
+                                                
+                                                
+                                            }
+                                            .padding(.horizontal)
+                                            
+                                            VStack{
+                                                
+                                                Text(item.descr)
+                                                    .font(.caption)
+                                                
+                                                    .foregroundStyle(
+                                                        Color(hex: "#504E76")
+                                                    )
+                                                
+                                                    .lineLimit(nil)
+                                                    .fixedSize(horizontal: false, vertical: true)
+                                                    
+                                                
+
+                                            }
+                                            .padding()
+                                            
+                                            
+                                            HStack{
+                                                
+                                                ZStack{
+                                                    
+                                                    Capsule()
+                                                        .frame(width: 100, height: 25)
+                                                        .foregroundStyle(
+                                                            Color(hex: "#504E76")
+                                                        )
+                                                    
+                                                    Text(item.status)
+                                                        .font(.caption)
+                                                        .fontWeight(.heavy)
+                                                    
+                                                        .foregroundStyle(
+                                                            Color(hex: "#DDD7E5")
+                                                        )
+                                                    
+                                                }
+                                                
+                                                Spacer()
+                                            }
+                                            .padding()
                                         }
                                         
                                     }
-                                    .padding()
-                                    HStack {
-                                        
-                                        Text(item.dateDue.formatted(date: .abbreviated, time: .omitted))
-                                            .font(.caption)
-                                        
-                                        Spacer()
-                                        
-                                        Text(item.dateDue.formatted(date: .omitted, time: .shortened))
-                                            .font(.caption)
-                                        
-                                        
-                                        
-                                        
-                                    }
-                                    .padding()
                                     
-                                    VStack{
+                                    .frame(width: 375)
+                                    .cornerRadius(15)
+                                    .padding()
                                         
-                                        Text(item.descr)
-                                            .font(.caption)
-                                    }
-                                    
-                                    .padding()
-                                    
-                                    HStack{
-                                        Text(item.status)
-                                            .font(.caption)
-                                    }
-                                    .padding()
+                                        .shadow(radius: 6, x: 5, y: 5)
+                                        
+                                       
                                 }
+                                .listRowBackground(Color.clear)
+                                
+                                
                             }
-                        }
-                    }
-                    .listStyle(.plain)
-                    
-                    
-                    
-                    
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Text("Tasks to Complete")
-                                .font(.caption)
-                                .bold()
-                                .foregroundStyle(
-                                    Color(hex: "#504E76")
-                                )
+                            .listStyle(.plain)
                             
+
+                        
                         }
                         
-                        
-                        ToolbarItem {
-                            
-                            ZStack{
-                                
-                                Circle()
-                                    .frame(width: 25, height: 25)
-                                    .foregroundStyle(
-                                        Color(hex: "#504E76"))
-                                    .offset(x:-15, y: 0)
-                                
-                                Button(action: {
-                                    showCreate.toggle()
-                                    
-                                }, label: {
-                                    Image(systemName: "plus")
-                                        .bold()
-                                        .foregroundStyle(
-                                            Color(hex: "#DDD7E5")
-                                        )
-                                        .offset(x:-19, y: 0)
-                                })
-                            }
-                        }
                     }
+                    
                     
                     .sheet(isPresented: $showCreate,
                            content: {
@@ -248,9 +332,9 @@ struct ScrollViewOfTasks: View {
                             
                         }
                         .presentationDetents([.medium])
+                       
                     })
-                }.background {
-                    Color(.blue)
+                
                 }
             }
                 
@@ -258,9 +342,7 @@ struct ScrollViewOfTasks: View {
             }
             
         }
-            
-            
-        }
+
 
 
 

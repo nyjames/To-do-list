@@ -20,7 +20,7 @@ final class TaskItems {
          timestamp: Date = .now,
          dateDue: Date = .now,
          descr: String = "",
-         status: String = "") {
+         status: String = "Not Started") {
         self.title = title
         self.timestamp = timestamp
         self.dateDue = dateDue
