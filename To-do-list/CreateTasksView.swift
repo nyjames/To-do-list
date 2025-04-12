@@ -32,9 +32,14 @@ struct CreateTasksView: View {
                     TextField("Name", text: $item.title)
                         
                     TextField("Description", text: $item.descr)
+                        .frame(height: 100)
+                        .padding()
+                      
+                    
                     DatePicker("Choose a Date",
                                selection: $item.dateDue,
                                displayedComponents: .date)
+                    
                     DatePicker("Choose a time",
                                selection: $item.dateDue,
                                displayedComponents: .hourAndMinute)

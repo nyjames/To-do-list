@@ -13,166 +13,174 @@ struct ScrollViewOfTasks: View {
     
     
     @State private var showCreate = false
+    @State private var edit: TaskItems?
     @Query private var items: [TaskItems]
+    let today = Date.now
     @Environment(\.modelContext) var context
+  
     
     var body: some View {
         
-        ZStack{
-            Image("Background")
-                .resizable()
-                .ignoresSafeArea()
-            
-            
-            
-            VStack{
-                
-                
-                Circle()
-                    .frame(width: 405, height: 500)
-                    .offset(x: 0, y: -250)
-                    .foregroundStyle(
-                        Color(hex: "#DDD7E5")
-                    )
-                
-                
-                
-                
-                
-                Spacer()
-                
-            }
-            VStack {
-                // Hello, Name!
-                
-                HStack{
-                    
-                    Text("Hello Nya, Welcome Back!")
-                        .font(.caption)
-                        .bold()
-                        .padding()
-                    
-                    Spacer()
-                    
-                    ZStack{
-                        
-                        Circle()
-                            .frame(width: 30, height: 30)
-                            .foregroundStyle(
-                                Color(hex: "#ffffff")
-                            )
-                        
-                        
-                        Image(systemName: "person.crop.circle.fill")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .padding()
-                        
-                    }
-                    
-                    
-                    
-                    
-                    
-                    
-                }.padding()
-                    .foregroundStyle(
-                        Color(hex: "#504E76")
-                    )
-                // quote of the day
+        NavigationStack {
                 ZStack{
+                    Image("Background")
+                        .resizable()
+                        .ignoresSafeArea()
                     
-                    Rectangle()
-                    
-                    Color(.white)
                     
                     
                     VStack{
                         
-                        Text("Quote of the day")
-                            .font(.caption)
-                            .bold()
                         
-                        HStack {
+                        Circle()
+                            .frame(width: 405, height: 500)
+                            .offset(x: 0, y: -250)
+                            .foregroundStyle(
+                                Color(hex: "#DDD7E5")
+                            )
+                        
+                        
+                        
+                        
+                        
+                        Spacer()
+                        
+                    }
+                    
+                    ScrollView {
+                    
+                    
+                    VStack {
+                        // Hello, Name!
+                        
+                        HStack{
                             
-                            
-                            
-                            Text("Hello, Name! You deserve to have your life together. Act like it!")
+                            Text("Hello Nya, Welcome Back!")
                                 .font(.caption)
-                                .fontWeight(.heavy)
                                 .bold()
+                                .padding()
                             
                             Spacer()
                             
-                        }.padding()
-                        
-                    }.foregroundStyle(
-                        Color(hex: "#504E76")
-                    )
-                    
-                    
-                    
-                    
-                    
-                }.frame(width: 375, height: 200)
-                    .cornerRadius(15)
-                    .padding()
-                    .shadow(radius: 6, x: 5, y: 5)
-                
-                // tasks stack
-                
-                HStack{
-                    Text("Tasks to Complete")
-                        .font(.caption)
-                        .bold()
-                        .foregroundStyle(
-                            Color(hex: "#504E76")
-                        )
-                    
-                    Spacer()
-                    
-                    ZStack{
-                        
-                        Circle()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(
-                                Color(hex: "#504E76"))
-                            .offset(x:-15, y: 0)
-                        
-                        Button(action: {
-                            showCreate.toggle()
+                            ZStack{
+                                
+                                Circle()
+                                    .frame(width: 30, height: 30)
+                                    .foregroundStyle(
+                                        Color(hex: "#ffffff")
+                                    )
+                                
+                                
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable()
+                                    .frame(width: 25, height: 25)
+                                    .padding()
+                                
+                            }
                             
-                        }, label: {
-                            Image(systemName: "plus")
+                            
+                            
+                            
+                            
+                            
+                        }.padding()
+                            .foregroundStyle(
+                                Color(hex: "#504E76")
+                            )
+                        // quote of the day
+                        ZStack{
+                            
+                            Rectangle()
+                            
+                            Color(.white)
+                            
+                            
+                            VStack{
+                                
+                                Text("Quote of the day")
+                                    .font(.caption)
+                                    .bold()
+                                
+                                HStack {
+                                    
+                                    
+                                    
+                                    Text("Hello, Name! You deserve to have your life together. Act like it!")
+                                        .font(.caption)
+                                        .fontWeight(.heavy)
+                                        .bold()
+                                    
+                                    Spacer()
+                                    
+                                }.padding()
+                                
+                            }.foregroundStyle(
+                                Color(hex: "#504E76")
+                            )
+                            
+                            
+                            
+                            
+                            
+                        }.frame(width: 375, height: 200)
+                            .cornerRadius(15)
+                            .padding()
+                            .shadow(radius: 6, x: 5, y: 5)
+                        
+                        // folders title
+                        
+                        Spacer()
+                        
+                        // horizontal stack of folders
+                        
+                        // tasks stack
+                        
+                        HStack{
+                            Text("Tasks to Complete")
+                                .font(.caption)
                                 .bold()
                                 .foregroundStyle(
-                                    Color(hex: "#DDD7E5")
+                                    Color(hex: "#504E76")
                                 )
-                                .offset(x:-19, y: 0)
-                        })
-                    }
-                    
-                }
-                
-                
-                
-                
-                NavigationStack {
-                    
-                    
-                    
-                   
-                    
-                    ZStack {
+                            
+                            Spacer()
+                            
+                            ZStack{
+                                
+                                Circle()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundStyle(
+                                        Color(hex: "#504E76"))
+                                    .offset(x:-15, y: 0)
+                                
+                                Button(action: {
+                                    showCreate.toggle()
+                                    
+                                }, label: {
+                                    Image(systemName: "plus")
+                                        .bold()
+                                        .foregroundStyle(
+                                            Color(hex: "#DDD7E5")
+                                        )
+                                        .offset(x:-15, y: 0)
+                                })
+                            }
+                            
+                        }.padding()
                         
-                        Image("Background")
-                            .resizable()
-                            .ignoresSafeArea()
                         
-                    
-
-                            List {
-                                ForEach(items) { item in
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                            
+                        let sorteditems = items.sorted {$0.dateDue > $1.dateDue}
+                            
+                            LazyVStack {
+                                ForEach(sorteditems) { item in
                                     
                                     ZStack {
                                         Rectangle()
@@ -189,8 +197,8 @@ struct ScrollViewOfTasks: View {
                                                     .foregroundStyle(
                                                         Color(hex: "#504E76")
                                                     )
-
-                                                    
+                                                
+                                                
                                                 
                                                 
                                                 
@@ -205,12 +213,42 @@ struct ScrollViewOfTasks: View {
                                                     
                                                     
                                                     Button {
-                                                            context.delete(item)
+                                                        
+                                                       edit = item
+                                                        
+                                                        
+                                                    } label: {
+                                                        Image(systemName: "pencil")
+                                                            .bold()
+                                                            .foregroundStyle(
+                                                                Color(hex: "#DDD7E5")
+                                                            )
+                                                        
                                                     }
                                                 }
+                                                
+                                                ZStack{
+                                                    
+                                                    Circle()
+                                                        .frame(width: 25, height: 25)
+                                                        .foregroundStyle(
+                                                            Color(hex: "#504E76"))
+                                                    
+                                                    
+                                                    Button {
+                                                        
+                                                        context.delete(item)
+                                                        
+                                                        
+                                                    } label: {
+                                                        Image(systemName: "trash.fill")
+                                                            .bold()
+                                                            .foregroundStyle(
+                                                                Color(hex: "#DDD7E5")
+                                                            )
+                                                        
+                                                    }
                                                 }
-                                                
-                                                
                                             }
                                             .padding()
                                             
@@ -245,7 +283,9 @@ struct ScrollViewOfTasks: View {
                                                 
                                                
                                                 
-                                               
+                                                
+                                                
+                                                
                                                 
                                                 
                                                 
@@ -264,9 +304,9 @@ struct ScrollViewOfTasks: View {
                                                 
                                                     .lineLimit(nil)
                                                     .fixedSize(horizontal: false, vertical: true)
-                                                    
                                                 
-
+                                                
+                                                
                                             }
                                             .padding()
                                             
@@ -288,6 +328,32 @@ struct ScrollViewOfTasks: View {
                                                         .foregroundStyle(
                                                             Color(hex: "#DDD7E5")
                                                         )
+                                                }
+           
+                                                
+                                                if item.dateDue < today {
+                                                    
+                                                    ZStack{
+                                                        
+                                                        Capsule()
+                                                            .frame(width: 100, height: 25)
+                                                            .foregroundStyle(
+                                                                Color(hex: "#DDD7E5")
+                                                            )
+                                                       
+                                                            Text("Over due")
+                                                                .font(.caption)
+                                                                .fontWeight(.heavy)
+                                                            
+                                                                .foregroundStyle(
+                                                                    Color(hex: "#504E76")
+                                                                )
+                                                        }
+                                                        
+                                                    
+                                                    
+                                                    
+
                                                     
                                                 }
                                                 
@@ -301,10 +367,10 @@ struct ScrollViewOfTasks: View {
                                     .frame(width: 375)
                                     .cornerRadius(15)
                                     .padding()
-                                        
-                                        .shadow(radius: 6, x: 5, y: 5)
-                                        
-                                       
+                                    
+                                    .shadow(radius: 6, x: 5, y: 5)
+                                    
+                                    
                                 }
                                 .listRowBackground(Color.clear)
                                 
@@ -312,26 +378,31 @@ struct ScrollViewOfTasks: View {
                             }
                             .listStyle(.plain)
                             
-
-                        
-                        }
+                            
+                            
                         
                     }
                     
-                    
-                    .sheet(isPresented: $showCreate,
-                           content: {
-                        NavigationStack {
-                            CreateTasksView()
-                            
-                        }
-                        .presentationDetents([.medium])
-                       
-                    })
-                
                 }
-            }
                 
+                .sheet(isPresented: $showCreate,
+                       content: {
+                    NavigationStack {
+                        CreateTasksView()
+                        
+                    }
+                    .presentationDetents([.medium])
+                    
+                })
+                .sheet(item: $edit) {
+                    edit = nil
+                } content: { item in
+                    UpdateTaskView(item: item)
+                }
+                
+            }
+        }
+    }
                 
             }
             
