@@ -257,7 +257,7 @@ struct ScrollViewOfTasks: View {
                                                 ZStack{
                                                     
                                                     Capsule()
-                                                        .frame(width: 150, height: 25)
+                                                        .frame(width: 125, height: 25)
                                                         .foregroundStyle(
                                                             Color(hex: "#DDD7E5")
                                                         )
@@ -329,14 +329,19 @@ struct ScrollViewOfTasks: View {
                                                             Color(hex: "#DDD7E5")
                                                         )
                                                 }
+                                                
+                                                Spacer()
+                                                Spacer()
+
            
                                                 
                                                 if item.dateDue < today {
                                                     
+                                                    
                                                     ZStack{
                                                         
                                                         Capsule()
-                                                            .frame(width: 100, height: 25)
+                                                            .frame(width: 80, height: 25)
                                                             .foregroundStyle(
                                                                 Color(hex: "#DDD7E5")
                                                             )
@@ -357,7 +362,7 @@ struct ScrollViewOfTasks: View {
                                                     
                                                 }
                                                 
-                                                Spacer()
+                                               
                                             }
                                             .padding()
                                         }
