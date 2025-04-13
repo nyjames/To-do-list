@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct To_do_listApp: App {
     var body: some Scene {
         WindowGroup {
-            todolistView()
+            ScrollViewOfTasks()
+            
         }
+        .modelContainer(for: TaskItems.self)
     }
+        
+        init() {
+            print(URL.applicationSupportDirectory.path(percentEncoded: false))
+        }
 }

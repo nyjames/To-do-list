@@ -6,71 +6,30 @@
 //
 
 import Foundation
+import SwiftData
 
-struct DataService {
+@Model
+final class TaskItems {
+    var title: String
+    var timestamp: Date
+    var dateDue: Date
+    var descr: String
+    var status: String
     
-    func getData() -> [todolistitems] {
-        
-        return [
-            
-            todolistitems(
-                title: "Walk Dog",
-                tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-                status: "Complete"
-            ),
-            
-            todolistitems(
-                title: "Create Study Guide",
-                tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-                status: "Complete"
-            ),
-            
-            todolistitems(
-                title: "Cook Family Dinner",
-                tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
-                status: "Complete"
-            ),
-            
-            todolistitems(
-                title: "Go to Grocery Store",
-                tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
-                status: "Complete"
-            ),
-            
-            
-            todolistitems(
-                title: "Walk Dog",
-                tasks: "Samantha Reminded me to make sure to walk the dog tonight.",
-                status: "Complete"
-            ),
-            
-            todolistitems(
-                title: "Create Study Guide",
-                tasks: "Create Study Guide for Math test for Mr. Arnold's Class.",
-                status: "Complete"
-            ),
-            
-            todolistitems(
-                title: "Cook Family Dinner",
-                tasks: "Missing chicken and rice. tell ryan to grab on the way to the store.",
-                status: "Complete"
-            ),
-            
-            todolistitems(
-                title: "Go to Grocery Store",
-                tasks: "Grab milk, eggs, apple sauce, and carrots from Aldi's. Look into downstair's cabinet for coupons on cereal and waffles.",
-                status: "Complete"
-            ),
-        
-            
-        ]
-        
-        
-        
-        
+    init(title: String = "",
+         timestamp: Date = .now,
+         dateDue: Date = .now,
+         descr: String = "",
+         status: String = "Not Started") {
+        self.title = title
+        self.timestamp = timestamp
+        self.dateDue = dateDue
+        self.descr = descr
+        self.status = status
     }
-
 }
+
+
 
 
 
