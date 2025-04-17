@@ -12,7 +12,7 @@ import SwiftData
 struct To_do_listApp: App {
     var body: some Scene {
         WindowGroup {
-            ScrollViewOfTasks()
+            MainTasksView()
             
         }
         .modelContainer(for: TaskItems.self)

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 
-struct ScrollViewOfTasks: View {
+struct MainTasksView: View {
     
     
     @State private var showCreate = false
@@ -417,5 +417,5 @@ struct ScrollViewOfTasks: View {
 
 
 #Preview {
-    ScrollViewOfTasks()
+    MainTasksView()
 }
