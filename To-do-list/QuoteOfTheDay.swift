@@ -9,23 +9,11 @@ import SwiftUI
 
 
 
-struct Quote: Codable, Identifiable {
-    
-    let id: UUID = UUID()
-
-    let q: String
-    let a: String
-}
 
 struct QuoteOfTheDay: View {
     
-    @State private var quotes: [Quote] = []
-    
-    
     var body: some View {
 
-            List(quotes) { item in
-                
                 ZStack{
                     
                     
@@ -61,10 +49,7 @@ struct QuoteOfTheDay: View {
                         HStack {
                             
                             Spacer()
-                            
-                            
-                            
-                            Text(item.q)
+
                                 .font(.caption)
                                 .fontWeight(.heavy)
                                 .bold()
@@ -82,7 +67,7 @@ struct QuoteOfTheDay: View {
                                         Color(hex: "#504E76")
                                     )
                                 
-                                Text(item.a)
+                                Text("hello")
                                 
                                     .font(.caption)
                                     .fontWeight(.heavy)
@@ -111,34 +96,12 @@ struct QuoteOfTheDay: View {
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
                 
-            }.ignoresSafeArea()
-            
-            .task {
-                do {
-                    
-                    try await loadQuote()
-                    
-                } catch {
-                    
-                    print(error)
-                    
-                }
             }
+
         
         
     }
     
-    func loadQuote() async throws {
-        
-        let url = URL(string: "https://zenquotes.io/api/quotes")!
-        let request = URLRequest(url: url)
-        let (data, _) = try await URLSession.shared.data(for: request)
-        
-        let quotes = try JSONDecoder().decode([Quote].self, from: data)
-        
-        self.quotes = quotes
-    }
-}
 
 #Preview {
     QuoteOfTheDay()

@@ -15,7 +15,7 @@ struct MainTasksView: View {
     @State private var showCreate = false
     @State private var edit: TaskItems?
     @Query private var items: [TaskItems]
-    let today = Date.now
+    @State private var date = Date.now
     @Environment(\.modelContext) var context
   
     
@@ -56,9 +56,9 @@ struct MainTasksView: View {
                         HStack{
                             
                             Text("Hello Nya, Welcome Back!")
-                                .font(.caption)
+                                .font(.title2)
                                 .bold()
-                                .padding()
+                                
                             
                             Spacer()
                             
@@ -87,45 +87,15 @@ struct MainTasksView: View {
                             .foregroundStyle(
                                 Color(hex: "#504E76")
                             )
-                        // quote of the day
-                        ZStack{
+                        
+                        // Calendar View
+                        
+                        
+                        CalendarView()
                             
-                            Rectangle()
-                            
-                            Color(.white)
-                            
-                            
-                            VStack{
-                                
-                                Text("Quote of the day")
-                                    .font(.caption)
-                                    .bold()
-                                
-                                HStack {
-                                    
-                                    
-                                    
-                                    Text("Hello, Name! You deserve to have your life together. Act like it!")
-                                        .font(.caption)
-                                        .fontWeight(.heavy)
-                                        .bold()
-                                    
-                                    Spacer()
-                                    
-                                }.padding()
-                                
-                            }.foregroundStyle(
-                                Color(hex: "#504E76")
-                            )
-                            
-                            
-                            
-                            
-                            
-                        }.frame(width: 375, height: 200)
-                            .cornerRadius(15)
-                            .padding()
-                            .shadow(radius: 6, x: 5, y: 5)
+                    }
+                        
+                        
                         
                         // folders title
                         
@@ -177,7 +147,7 @@ struct MainTasksView: View {
                         
                         
                             
-                        let sorteditems = items.sorted {$0.dateDue > $1.dateDue}
+                        let sorteditems = items.sorted {$1.dateDue > $0.dateDue}
                             
                             LazyVStack {
                                 ForEach(sorteditems) { item in
@@ -335,7 +305,7 @@ struct MainTasksView: View {
 
            
                                                 
-                                                if item.dateDue < today {
+                                                if item.dateDue < date {
                                                     
                                                     
                                                     ZStack{
@@ -409,7 +379,6 @@ struct MainTasksView: View {
         }
     }
                 
-            }
             
         
 

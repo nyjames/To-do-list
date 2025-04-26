@@ -35,14 +35,14 @@ struct CreateTasksView: View {
                         .frame(height: 100)
                         .padding()
                       
+                    DatePicker("Choose a time",
+                               selection: $item.dateDue,
+                               displayedComponents: .hourAndMinute)
                     
                     DatePicker("Choose a Date",
                                selection: $item.dateDue,
                                displayedComponents: .date)
                     
-                    DatePicker("Choose a time",
-                               selection: $item.dateDue,
-                               displayedComponents: .hourAndMinute)
                     
                     Picker("status", selection: $item.status) {
                         Text("Not Started").tag("Not Started")
