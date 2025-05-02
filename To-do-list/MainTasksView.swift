@@ -31,17 +31,12 @@ struct MainTasksView: View {
                     
                     VStack{
                         
-                        
                         Circle()
                             .frame(width: 405, height: 500)
                             .offset(x: 0, y: -250)
                             .foregroundStyle(
                                 Color(hex: "#DDD7E5")
                             )
-                        
-                        
-                        
-                        
                         
                         Spacer()
                         
@@ -56,7 +51,7 @@ struct MainTasksView: View {
                         HStack{
                             
                             Text("Hello Nya, Welcome Back!")
-                                .font(.title2)
+                                .font(.title)
                                 .bold()
                                 
                             
@@ -65,7 +60,7 @@ struct MainTasksView: View {
                             ZStack{
                                 
                                 Circle()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 55, height: 55)
                                     .foregroundStyle(
                                         Color(hex: "#ffffff")
                                     )
@@ -73,15 +68,13 @@ struct MainTasksView: View {
                                 
                                 Image(systemName: "person.crop.circle.fill")
                                     .resizable()
-                                    .frame(width: 25, height: 25)
+                                    .frame(width: 45, height: 45)
                                     .padding()
                                 
                             }
                             
                             
-                            
-                            
-                            
+                    
                             
                         }.padding()
                             .foregroundStyle(
@@ -90,8 +83,11 @@ struct MainTasksView: View {
                         
                         // Calendar View
                         
+                       
+                        
                         
                         CalendarView()
+                            .padding()
                             
                     }
                         
@@ -101,13 +97,111 @@ struct MainTasksView: View {
                         
                         Spacer()
                         
+                       
+                        
+                        HStack{
+                            Text("Categories")
+                                .font(.title)
+                                .bold()
+                                .foregroundStyle(
+                                    Color(hex: "#504E76")
+                                )
+                            
+                            Spacer()
+                            
+                            ZStack{
+                                
+                                Circle()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundStyle(
+                                        Color(hex: "#504E76"))
+                                    .offset(x:-15, y: 0)
+                                
+                                Button(action: {
+                                    showCreate.toggle()
+                                    
+                                }, label: {
+                                    Image(systemName: "plus")
+                                        .bold()
+                                        .foregroundStyle(
+                                            Color(hex: "#DDD7E5")
+                                        )
+                                        .offset(x:-15, y: 0)
+                                })
+                            }
+                            
+                        }.padding()
+                        
                         // horizontal stack of folders
+                        
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                            }
+                                
+                                    
+                                
+                            }
+                                
+
                         
                         // tasks stack
                         
                         HStack{
                             Text("Tasks to Complete")
-                                .font(.caption)
+                                .font(.title)
                                 .bold()
                                 .foregroundStyle(
                                     Color(hex: "#504E76")
@@ -161,7 +255,7 @@ struct MainTasksView: View {
                                             HStack {
                                                 // title
                                                 Text(item.title)
-                                                    .font(.caption)
+                                                    .font(.headline)
                                                     .fontWeight(.heavy)
                                                 
                                                     .foregroundStyle(
@@ -250,23 +344,16 @@ struct MainTasksView: View {
                                                     .foregroundStyle(
                                                         Color(hex: "#504E76")
                                                     )
-                                                
-                                               
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
+                                                    
                                             }
                                             .padding(.horizontal)
+                                            
+                                            Spacer()
                                             
                                             VStack{
                                                 
                                                 Text(item.descr)
-                                                    .font(.caption)
+                                                    .font(.subheadline)
                                                 
                                                     .foregroundStyle(
                                                         Color(hex: "#504E76")
@@ -279,6 +366,8 @@ struct MainTasksView: View {
                                                 
                                             }
                                             .padding()
+                                            
+                                            Spacer()
                                             
                                             
                                             HStack{
@@ -324,12 +413,7 @@ struct MainTasksView: View {
                                                                     Color(hex: "#504E76")
                                                                 )
                                                         }
-                                                        
-                                                    
-                                                    
-                                                    
-
-                                                    
+                                                                            
                                                 }
                                                 
                                                
@@ -339,7 +423,7 @@ struct MainTasksView: View {
                                         
                                     }
                                     
-                                    .frame(width: 375)
+                                    .frame(width: 380)
                                     .cornerRadius(15)
                                     .padding()
                                     
@@ -365,8 +449,10 @@ struct MainTasksView: View {
                     NavigationStack {
                         CreateTasksView()
                         
+                        
                     }
-                    .presentationDetents([.medium])
+                    .presentationDetents([.large])
+                    
                     
                 })
                 .sheet(item: $edit) {

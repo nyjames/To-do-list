@@ -13,22 +13,46 @@ struct CalendarView: View {
     let daysOfWeek = Date.capitalizedFirstLettersOfWeekdays
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     @State private var days: [Date] = []
+    @State private var item = TaskItems()
+    
+    // setting up counts
+    
+    @State private var counts = [Int : Int]()
     
     var body: some View {
         
         
         ZStack {
             
-            LabeledContent("Date") {
-                DatePicker(
-                    
-                    "",
-                    selection: $date,
-                    displayedComponents: .date
-                    
+            // LabeledContent("\(Date.fullMonthNames[date.monthInt - 1])")
+            
+           
+            LabeledContent (""){
+                
+                Button {
+                    date = Calendar.current.date(byAdding: .month, value: -1, to: date)!
+                }label: {
+                    Image(systemName: "arrow.left")
+                }.foregroundStyle(
+                    Color(hex: "#504E76")
                 )
                 
-            }.padding()
+                Spacer()
+                
+                Text("\(Date.abbreviatedMonthNames[date.monthInt - 1]) " + " \(date.yearInt)")
+                
+                Spacer()
+                
+                Button {
+                    date = Calendar.current.date(byAdding: .month, value: 1, to: date)!
+                }label: {
+                    Image(systemName: "arrow.right")
+                }.foregroundStyle(
+                    Color(hex: "#504E76")
+                )
+                
+                
+            }
                 .font(.title2)
                 .bold()
                 .padding()
@@ -39,10 +63,12 @@ struct CalendarView: View {
             
                 .background(
                     Capsule()
-                        .frame(width: 75, height: 30)
-                        .offset(x: -145, y: 0)
+                    
+                        .frame(width: 150, height: 40)
+                        .offset(x: 4, y: 0)
                         .foregroundStyle(
                             Color(hex: "#504E76")
+                        
                         )
                 )
                 
@@ -56,8 +82,6 @@ struct CalendarView: View {
             
             
             VStack {
-                
-
                 
                 ZStack{
                     
@@ -107,6 +131,7 @@ struct CalendarView: View {
                                         )
                                 )
                         }
+                        
                     }
                 }
                 
@@ -117,11 +142,19 @@ struct CalendarView: View {
             }
             .onChange(of: date) {
                 days = date.calendarDisplayDays
+                // setupCounts()
             }
             
-        }.frame(width: 380, height: 355)
+        }.frame(width: 380, height: 350)
             .cornerRadius(10)
             .shadow(radius: 6, x: 5, y: 5)
+        
+        // function to set up counts for each task on the day due
+        
+  //      func setupCounts() {
+// let mappedItems = item.map{($0.date.datInt, 1)}
+   //         counts = Dictionary(mappedItems, uniquingKeysWith: *)
+     //   }
            
             
     }

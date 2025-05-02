@@ -26,17 +26,25 @@ extension Date {
         }
         return weekdays.map { $0.capitalized }
     }
+    
        
-       static var fullMonthNames: [String] {
-           let dateFormatter = DateFormatter()
-           dateFormatter.locale = Locale.current
+    static var fullMonthNames: [String] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
 
-           return (1...12).compactMap { month in
-               dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
-               let date = Calendar.current.date(from: DateComponents(year: 2000, month: month, day: 1))
-               return date.map { dateFormatter.string(from: $0) }
+        return (1...12).compactMap { month in
+            dateFormatter.setLocalizedDateFormatFromTemplate("MMMM")
+            let date = Calendar.current.date(from: DateComponents(year: 2000, month: month, day: 1))
+            return date.map { dateFormatter.string(from: $0) }
            }
        }
+    
+    static var abbreviatedMonthNames: [String] {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        return formatter.shortMonthSymbols.map { $0.capitalized }
+    }
+
     
     var startOfMonth: Date {
         Calendar.current.dateInterval(of: .month, for: self)!.start
