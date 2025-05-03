@@ -9,13 +9,13 @@ import SwiftUI
 import SwiftData
 
 
-struct ScrollViewOfTasks: View {
+struct MainTasksView: View {
     
     
     @State private var showCreate = false
     @State private var edit: TaskItems?
     @Query private var items: [TaskItems]
-    let today = Date.now
+    @State private var date = Date.now
     @Environment(\.modelContext) var context
   
     
@@ -31,17 +31,12 @@ struct ScrollViewOfTasks: View {
                     
                     VStack{
                         
-                        
                         Circle()
                             .frame(width: 405, height: 500)
                             .offset(x: 0, y: -250)
                             .foregroundStyle(
                                 Color(hex: "#DDD7E5")
                             )
-                        
-                        
-                        
-                        
                         
                         Spacer()
                         
@@ -56,88 +51,159 @@ struct ScrollViewOfTasks: View {
                         HStack{
                             
                             Text("Hello Nya, Welcome Back!")
-                                .font(.caption)
+                                .font(.title)
                                 .bold()
-                                .padding()
+                                
                             
                             Spacer()
                             
                             ZStack{
                                 
                                 Circle()
-                                    .frame(width: 30, height: 30)
+                                    .frame(width: 50, height: 50)
                                     .foregroundStyle(
                                         Color(hex: "#ffffff")
                                     )
+                                    
                                 
                                 
                                 Image(systemName: "person.crop.circle.fill")
                                     .resizable()
-                                    .frame(width: 25, height: 25)
+                                    .frame(width: 45, height: 45)
                                     .padding()
                                 
                             }
                             
                             
-                            
-                            
-                            
+                    
                             
                         }.padding()
                             .foregroundStyle(
                                 Color(hex: "#504E76")
                             )
-                        // quote of the day
-                        ZStack{
-                            
-                            Rectangle()
-                            
-                            Color(.white)
-                            
-                            
-                            VStack{
-                                
-                                Text("Quote of the day")
-                                    .font(.caption)
-                                    .bold()
-                                
-                                HStack {
-                                    
-                                    
-                                    
-                                    Text("Hello, Name! You deserve to have your life together. Act like it!")
-                                        .font(.caption)
-                                        .fontWeight(.heavy)
-                                        .bold()
-                                    
-                                    Spacer()
-                                    
-                                }.padding()
-                                
-                            }.foregroundStyle(
-                                Color(hex: "#504E76")
-                            )
-                            
-                            
-                            
-                            
-                            
-                        }.frame(width: 375, height: 200)
-                            .cornerRadius(15)
+                        
+                        // Calendar View
+                        
+                       
+                        
+                        
+                        CalendarView()
                             .padding()
-                            .shadow(radius: 6, x: 5, y: 5)
+                           
+                            
+                    }
+                        
+                        
                         
                         // folders title
                         
                         Spacer()
                         
+                       
+                        
+                        HStack{
+                            Text("Categories")
+                                .font(.title)
+                                .bold()
+                                .foregroundStyle(
+                                    Color(hex: "#504E76")
+                                )
+                            
+                            Spacer()
+                            
+                            ZStack{
+                                
+                                Circle()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundStyle(
+                                        Color(hex: "#504E76"))
+                                    .offset(x:-15, y: 0)
+                                
+                                Button(action: {
+                                    showCreate.toggle()
+                                    
+                                }, label: {
+                                    Image(systemName: "plus")
+                                        .bold()
+                                        .foregroundStyle(
+                                            Color(hex: "#DDD7E5")
+                                        )
+                                        .offset(x:-15, y: 0)
+                                })
+                            }
+                            
+                        }.padding()
+                        
                         // horizontal stack of folders
+                        
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                                
+                                VStack{
+                                    
+                                    Capsule()
+                                        .frame(width: 75, height: 30)
+
+                                        .foregroundStyle(
+                                            Color(hex: "#504E76")
+                                        )
+
+                                    
+                                }.padding()
+                                    .border(.black)
+                            }
+                                
+                                    
+                                
+                            }
+                                
+
                         
                         // tasks stack
                         
                         HStack{
                             Text("Tasks to Complete")
-                                .font(.caption)
+                                .font(.title)
                                 .bold()
                                 .foregroundStyle(
                                     Color(hex: "#504E76")
@@ -177,7 +243,7 @@ struct ScrollViewOfTasks: View {
                         
                         
                             
-                        let sorteditems = items.sorted {$0.dateDue > $1.dateDue}
+                        let sorteditems = items.sorted {$1.dateDue > $0.dateDue}
                             
                             LazyVStack {
                                 ForEach(sorteditems) { item in
@@ -191,7 +257,7 @@ struct ScrollViewOfTasks: View {
                                             HStack {
                                                 // title
                                                 Text(item.title)
-                                                    .font(.caption)
+                                                    .font(.headline)
                                                     .fontWeight(.heavy)
                                                 
                                                     .foregroundStyle(
@@ -280,23 +346,16 @@ struct ScrollViewOfTasks: View {
                                                     .foregroundStyle(
                                                         Color(hex: "#504E76")
                                                     )
-                                                
-                                               
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
-                                                
+                                                    
                                             }
                                             .padding(.horizontal)
+                                            
+                                            Spacer()
                                             
                                             VStack{
                                                 
                                                 Text(item.descr)
-                                                    .font(.caption)
+                                                    .font(.subheadline)
                                                 
                                                     .foregroundStyle(
                                                         Color(hex: "#504E76")
@@ -309,6 +368,8 @@ struct ScrollViewOfTasks: View {
                                                 
                                             }
                                             .padding()
+                                            
+                                            Spacer()
                                             
                                             
                                             HStack{
@@ -335,7 +396,7 @@ struct ScrollViewOfTasks: View {
 
            
                                                 
-                                                if item.dateDue < today {
+                                                if item.dateDue < date {
                                                     
                                                     
                                                     ZStack{
@@ -354,12 +415,7 @@ struct ScrollViewOfTasks: View {
                                                                     Color(hex: "#504E76")
                                                                 )
                                                         }
-                                                        
-                                                    
-                                                    
-                                                    
-
-                                                    
+                                                                            
                                                 }
                                                 
                                                
@@ -369,7 +425,7 @@ struct ScrollViewOfTasks: View {
                                         
                                     }
                                     
-                                    .frame(width: 375)
+                                    .frame(width: 380)
                                     .cornerRadius(15)
                                     .padding()
                                     
@@ -395,8 +451,10 @@ struct ScrollViewOfTasks: View {
                     NavigationStack {
                         CreateTasksView()
                         
+                        
                     }
-                    .presentationDetents([.medium])
+                    .presentationDetents([.large])
+                    
                     
                 })
                 .sheet(item: $edit) {
@@ -409,7 +467,6 @@ struct ScrollViewOfTasks: View {
         }
     }
                 
-            }
             
         
 
@@ -417,5 +474,5 @@ struct ScrollViewOfTasks: View {
 
 
 #Preview {
-    ScrollViewOfTasks()
+    MainTasksView()
 }
