@@ -60,10 +60,11 @@ struct MainTasksView: View {
                             ZStack{
                                 
                                 Circle()
-                                    .frame(width: 55, height: 55)
+                                    .frame(width: 50, height: 50)
                                     .foregroundStyle(
                                         Color(hex: "#ffffff")
                                     )
+                                    
                                 
                                 
                                 Image(systemName: "person.crop.circle.fill")
@@ -88,6 +89,7 @@ struct MainTasksView: View {
                         
                         CalendarView()
                             .padding()
+                           
                             
                     }
                         

@@ -85,10 +85,12 @@ struct CalendarView: View {
                 
                 ZStack{
                     
-                    RoundedRectangle(cornerRadius: 10)
+                    Rectangle()
+                        
                         .foregroundStyle(
                             Color(hex: "#DDD7E5")
                         )
+                        
                     
                     HStack {
                         ForEach(daysOfWeek.indices, id: \.self) { index in
@@ -109,7 +111,7 @@ struct CalendarView: View {
             
                     
                     
-                }.frame(width: 370, height: 40)
+                }.frame(width: .infinity, height: 40)
                 
                 Spacer()
                 
@@ -121,14 +123,16 @@ struct CalendarView: View {
                             Text(day.formatted(.dateTime.day()))
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color(hex: "#504E76"))
-                                .frame(maxWidth: .infinity, minHeight: 40)
+                                .frame(maxWidth: .infinity, minHeight: 50)
                                 .background(
                                     Circle()
                                         .foregroundStyle(
                                             Date.now.startOfDay == day.startOfDay
                                             ? Color(hex: "#F0E6E4")
                                             :  Color.clear
+                                            
                                         )
+
                                 )
                         }
                         
@@ -136,7 +140,8 @@ struct CalendarView: View {
                 }
                 
                 Spacer()
-            }.padding(10)
+                    
+            }
             .onAppear {
                 days = date.calendarDisplayDays
             }
@@ -145,9 +150,11 @@ struct CalendarView: View {
                 // setupCounts()
             }
             
-        }.frame(width: 380, height: 350)
-            .cornerRadius(10)
-            .shadow(radius: 6, x: 5, y: 5)
+        }
+                .frame(width: 380, height: 350)
+                .cornerRadius(10)
+                .shadow(radius: 6, x: 5, y: 5)
+            
         
         // function to set up counts for each task on the day due
         
