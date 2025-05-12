@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-import Foundation
 
 extension Date {
     static var firstDayOfWeek = Calendar.current.firstWeekday

@@ -15,7 +15,7 @@ struct To_do_listApp: App {
             MainTasksView()
             
         }
-        .modelContainer(for: TaskItems.self)
+        .modelContainer(for: [Category.self, TaskItems.self])
     }
         
         init() {

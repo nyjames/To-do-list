@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 
@@ -14,6 +15,9 @@ struct CreateTasksView: View {
     @Environment(\.dismiss) var dismiss
     @State private var item = TaskItems()
     @Environment(\.modelContext) var context
+    
+    @State var selectedCategory: Category?
+    @Query private var categories: [Category]
 
     
     
@@ -52,16 +56,36 @@ struct CreateTasksView: View {
                     }
                     .pickerStyle(.menu)
                     
+                    Picker("", selection: $selectedCategory) {
+                        
+                        ForEach(categories) { category in
+                            Text(category.title)
+                                .tag(category as Category?)
+                        }
+                        Text("None")
+                            .tag(nil as Category?)
+                    }
+                    
                     Button("Create") {
                         withAnimation {
                             context.insert(item)
                         }
+                        save()
                         dismiss()
                     }
                 }.navigationTitle("Create Task")
                     .listStyle(.plain)
             }
         }
+    }
+}
+
+private extension CreateTasksView {
+    
+    func save() {
+        context.insert(item)
+        item.category = selectedCategory
+        selectedCategory?.items?.append(item)
     }
 }
 

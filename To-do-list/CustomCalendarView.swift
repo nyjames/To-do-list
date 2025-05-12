@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @State private var color: Color = .blue
+   
     @State private var date = Date.now
     let daysOfWeek = Date.capitalizedFirstLettersOfWeekdays
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
@@ -65,10 +65,14 @@ struct CalendarView: View {
                     Capsule()
                     
                         .frame(width: 150, height: 40)
-                        .offset(x: 4, y: 0)
+                        .offset(x: 1.4, y: 0)
                         .foregroundStyle(
                             Color(hex: "#504E76")
                         
+                        )
+                        .overlay(
+                            Capsule()
+                                .stroke(Color.white, lineWidth: 3)
                         )
                 )
                 
@@ -77,8 +81,10 @@ struct CalendarView: View {
         ZStack {
             
             Rectangle()
+                .fill(Color.white)
             
-            Color(.white)
+
+                
             
             
             VStack {
@@ -111,7 +117,7 @@ struct CalendarView: View {
             
                     
                     
-                }.frame(width: .infinity, height: 40)
+                }.frame(height: 40)
                 
                 Spacer()
                 
@@ -125,13 +131,24 @@ struct CalendarView: View {
                                 .foregroundStyle(Color(hex: "#504E76"))
                                 .frame(maxWidth: .infinity, minHeight: 50)
                                 .background(
-                                    Circle()
-                                        .foregroundStyle(
-                                            Date.now.startOfDay == day.startOfDay
-                                            ? Color(hex: "#F0E6E4")
-                                            :  Color.clear
-                                            
-                                        )
+                                    
+                                    ZStack{
+                                        
+                                        
+                                        
+                                        Circle()
+                                            .frame(width: 40, height: 40)
+                                        
+                                            .foregroundStyle(
+                                                Date.now.startOfDay == day.startOfDay
+                                                ? Color(hex: "#F0E6E4")
+                                                
+                                                :  Color.clear
+                                                
+                                                
+                                            )
+                                        
+                                    }
 
                                 )
                         }

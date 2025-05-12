@@ -21,7 +21,13 @@ extension Color {
         let greenValue = Double((rgb >> 8) & 0xFF) / 255.0
         let blueValue = Double(rgb & 0xFF) / 255.0
         self.init(red: redValue, green: greenValue, blue: blueValue)
+        
     }
+    
+    static let primaryColor = Color(hex: "#F0E6E4")
+    static let secondaryColor = Color(hex: "#D0C1BA")
+    static let tertiaryColor = Color(hex: "#AFAFAF")
+
 }
 
 // Websites to pick out Hex code Colors
